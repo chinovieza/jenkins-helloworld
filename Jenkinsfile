@@ -1,14 +1,23 @@
 pipeline {
-    agent {
-        docker { 
-            image 'node:16.13.1-alpine'
-            args '-u root:root'
-         }
+
+    agent any
+
+    environment {
+        PROJECT_PATH="/home/jenkins/myaccount"
     }
-    stages {
-        stage('Test') {
+
+    stages{
+        stage('Pull the products config from Git') {
             steps {
-                sh 'node --version'
+                dir("${PROJECT_PATH}") {
+                    sh """
+                    git reset --hard HEAD
+                    git checkout master
+                    git pull origin master
+                    git fetch --tags --force
+                    if [ "${params.VERSION}" != "latest" ]; then git checkout "${params.VERSION}"; fi
+                    """
+                }
             }
         }
     }

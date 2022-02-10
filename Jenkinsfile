@@ -15,6 +15,8 @@ pipeline {
                     pwd
                     ls -alF
                     git branch
+                    git checkout master
+                    git branch
                     """
                 }
             }

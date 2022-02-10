@@ -3,7 +3,7 @@ pipeline {
     agent any
 
     environment {
-        PROJECT_PATH="/home/jenkins/myaccount"
+        PROJECT_PATH="/var/jenkins_home/workspace/TEST"
     }
 
     stages{
@@ -11,11 +11,9 @@ pipeline {
             steps {
                 dir("${PROJECT_PATH}") {
                     sh """
-                    git reset --hard HEAD
-                    git checkout master
-                    git pull origin master
-                    git fetch --tags --force
-                    if [ "${params.VERSION}" != "latest" ]; then git checkout "${params.VERSION}"; fi
+                    echo "Hello World"
+                    pwd
+                    ls -alF
                     """
                 }
             }

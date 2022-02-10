@@ -14,7 +14,7 @@ pipeline {
                     echo "Hello World"
                     pwd
                     ls -alF
-                    git branch -a
+                    git branch
                     """
                 }
             }

@@ -14,6 +14,11 @@ pipeline {
                     echo "Hello World"
                     pwd
                     ls -alF
+                    git reset --hard HEAD
+                    git checkout master
+                    git pull origin master
+                    git fetch --tags --force
+                    if [ "${params.VERSION}" != "latest" ]; then git checkout "${params.VERSION}"; fi
                     """
                 }
             }

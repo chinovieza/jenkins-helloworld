@@ -3,7 +3,7 @@ pipeline {
     agent any
 
     environment {
-        PROJECT_PATH="/var/jenkins_home/workspace/TEST"
+        PROJECT_PATH="/var/jenkins_home/workspace/My-Pipeline_main"
     }
 
     stages{
